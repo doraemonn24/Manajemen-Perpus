@@ -41,7 +41,7 @@ class MahasiswaBookController extends Controller
             $books->orderBy('judul');
         }
 
-        $books = $books->paginate(12)->withQueryString();
+        $books = $books->paginate(4)->withQueryString();
 
         return view('mahasiswa.books.index', compact('books', 'categories'))
             ->with('pageHeader', 'Daftar Buku');

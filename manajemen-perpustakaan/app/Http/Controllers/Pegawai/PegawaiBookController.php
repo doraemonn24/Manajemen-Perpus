@@ -11,7 +11,7 @@ class PegawaiBookController extends Controller
 {
     public function index()
     {
-        $books = Book::orderBy('judul')->paginate(10);
+        $books = Book::orderBy('judul')->paginate(5);
         return view('pegawai.books.index', compact('books'))
             ->with('pageHeader', 'Manajemen Buku');
     }

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -32,6 +33,37 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function loans()
+    {
+        return $this->hasMany(Loan::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    // Helper untuk Role
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isPegawai()
+    {
+        return $this->role === 'pegawai';
+    }
+
+    public function isMahasiswa()
+    {
+        return $this->role === 'mahasiswa';
+    }
 
     /**
      * Get the attributes that should be cast.
